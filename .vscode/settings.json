@@ -1,0 +1,16 @@
+{
+  "todohighlight.isEnable": true,
+  "editor.tabSize": 2,
+  "editor.detectIndentation": false,
+  "includeLanguages": {
+    "vue-html": "html"
+  },
+  "window.zoomLevel": 0,
+  "prettier.semi": true,
+  "prettier.singleQuote": true,
+  "prettier.eslintIntegration": true,
+  // 控制编辑器是否应呈现空白字符
+  "editor.renderWhitespace": true,
+  // 启用后，将在保存文件时剪裁尾随空格。
+  "files.trimTrailingWhitespace": true,
+  }
