@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import './components/navigation_icon_view.dart';
 import './me/index.dart';
+import './recommand/index.dart';
+import './rate/index.dart';
 
 class Layout extends StatefulWidget {
   @override
@@ -18,7 +20,11 @@ class _Layout extends State<Layout> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    _pages = <StatefulWidget>[new Personal()];
+    _pages = <StatefulWidget>[
+      new Recommand(),
+      new Personal(),
+      new Rate(),
+    ];
     _icons = <NavigationIconView>[
       new NavigationIconView(
         icon: new Icon(Icons.assessment),
