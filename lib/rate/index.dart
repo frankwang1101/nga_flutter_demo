@@ -79,7 +79,7 @@ class RateComponent2 extends StatelessWidget {
             child: Row(
               children: <Widget>[
                 new Text(_info.name),
-                new Text(_info.releseTime.toString())
+                new Text(_info.releaseTime.toString())
               ],
             ),
           )

@@ -19,7 +19,33 @@ class _Layout extends State<Layout> with TickerProviderStateMixin {
   void initState() {
     super.initState();
     _pages = <StatefulWidget>[new Personal()];
-    _icons = <NavigationIconView>[];
+    _icons = <NavigationIconView>[
+      new NavigationIconView(
+        icon: new Icon(Icons.assessment),
+        text: new Text('推荐'),
+        vsync: this
+      ),
+      new NavigationIconView(
+        icon: new Icon(Icons.check_circle),
+        text: new Text('社区'),
+        vsync: this
+      ),
+      new NavigationIconView(
+        icon: new Icon(Icons.crop_square),
+        text: new Text('评分'),
+        vsync: this
+      ),
+      new NavigationIconView(
+        icon: new Icon(Icons.computer),
+        text: new Text('赛事'),
+        vsync: this
+      ),
+      new NavigationIconView(
+        icon: new Icon(Icons.person),
+        text: new Text('我的'),
+        vsync: this
+      ),
+    ];
     _currentPage = _pages[_currentIndex];
   }
 
@@ -31,6 +57,7 @@ class _Layout extends State<Layout> with TickerProviderStateMixin {
       fixedColor: Colors.yellowAccent,
       type: BottomNavigationBarType.fixed,
       onTap: (int index){
+        print('tap $index');
         setState(() {
           _icons[_currentIndex].controller.reverse();
           _currentIndex = index;
