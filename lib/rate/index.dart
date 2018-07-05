@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import '../config/mock.dart';
 
 class Rate extends StatefulWidget {
   @override
   State<Rate> createState() {
-    // TODO: implement createState
     return new _Rate();
   }
 }
@@ -13,19 +13,21 @@ class RateType {
   double rate;
   String name;
   String url;
-  DateTime releaseTime;
+  String releaseTime;
   List<int> consoles;
 
-  RateType(this.rank, rate, name, url, releaseTime, consoles);
+  RateType(this.rank, this.rate, this.name, this.url, this.releaseTime, this.consoles);
 }
 
 class RateComponent1 extends StatelessWidget {
   RateType _info;
 
+  RateComponent1(this._info);
   @override
   Widget build(BuildContext context) {
     return new Container(
         child: new Stack(
+      alignment: Alignment.bottomCenter,
       children: <Widget>[
         new Column(
           children: <Widget>[
@@ -35,7 +37,7 @@ class RateComponent1 extends StatelessWidget {
                 new Text('${_info.rate}分'),
               ],
             ),
-            new Image.asset(_info.url),
+            new Image(image: new NetworkImage(_info.url)),
           ],
         ),
         new Positioned(
@@ -43,8 +45,7 @@ class RateComponent1 extends StatelessWidget {
             _info.name,
             textAlign: TextAlign.center,
           ),
-          bottom: 0.0,
-          left: 0.0,
+
         )
       ],
     ));
@@ -54,6 +55,7 @@ class RateComponent1 extends StatelessWidget {
 class RateComponent2 extends StatelessWidget {
   RateType _info;
 
+  RateComponent2(this._info);
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -63,7 +65,9 @@ class RateComponent2 extends StatelessWidget {
           new Stack(
             children: <Widget>[
               new Container(
-                child: new Image.asset(_info.url),
+                child: new Image(
+                  image: new NetworkImage(_info.url),
+                ),
               ),
               new Positioned(
                 child: new Container(
@@ -100,11 +104,19 @@ class RateLayout extends StatelessWidget {
           new Container(
             child: new ListView(
               scrollDirection: Axis.horizontal,
-              children: <Widget>[],
+              children: genData(),
             ),
           ),
           // new Container(), // TODO:
-          new Container(),
+          new Container(
+            child: new Column(
+              children: <Widget>[
+                new ListView(
+                  children: genData(2),
+                )
+              ],
+            ),
+          ),
         ],
       ),
     );
@@ -119,7 +131,11 @@ class _Rate extends State<Rate> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    _tabs = [new RateLayout(1)];
+    _tabs = [
+      new RateLayout(1),
+      new RateLayout(1),
+      new RateLayout(1),
+    ];
     _tabTitles = [
       '主机游戏',
       '手机游戏',
@@ -130,7 +146,9 @@ class _Rate extends State<Rate> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-      home: new Scaffold(
+        home: new DefaultTabController(
+      length: _tabs.length,
+      child: new Scaffold(
         appBar: new AppBar(
           title: new Text('评分'),
           bottom: new TabBar(
@@ -145,6 +163,21 @@ class _Rate extends State<Rate> with TickerProviderStateMixin {
           children: _tabs,
         ),
       ),
+    ));
+  }
+}
+
+genData([type = 1, n = 4]){
+  List<RateType> types = [];
+  for(int i=0;i<n;i++){
+    RateType type = new RateType(rate[i]["rank"], rate[i]["rate"], rate[i]["name"], rate[i]["url"], rate[i]["date"], null);
+    print(type.url);
+    types.add(
+      type
     );
   }
+  if (type == 1){
+    return types.map((type) => new RateComponent1(type)).toList();
+  }
+  return types.map((type) => new RateComponent2(type)).toList();
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../config/globalStyle.dart';
+import 'dart:math';
 
 class Community extends StatefulWidget {
   @override
@@ -18,12 +19,20 @@ class ColumnIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Container(
+      width: 80.0,
+      margin: EdgeInsets.only(top: 15.0),
       child: new Column(
         children: <Widget>[
-          new Image(
+          new Container(
+            margin: EdgeInsets.only(bottom: 10.0),
+            child: new Image(
             image: new NetworkImage(imgSrc),
+            width: 50.0,
+            height: 50.0,
+            fit: BoxFit.cover,
           ),
-          new Text(text)
+          ),
+          new Text(text, textAlign: TextAlign.center,)
         ],
       ),
     );
@@ -87,10 +96,13 @@ class _Community extends State<Community> with TickerProviderStateMixin {
       new Container(
         decoration: boxGrey,
         child: new Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          // mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            new Text('长按拖动可以修改排序'),
-            new Row(
-              children: getIcons([14, 0, 16, 7], _icons),
+            new Text('长按拖动可以修改排序', textAlign: TextAlign.left,),
+            new Column(
+              // mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: getIcons([14, 0, 16, 7, 2, 6, 3, 4], _icons),
             )
           ],
         ),
@@ -100,11 +112,11 @@ class _Community extends State<Community> with TickerProviderStateMixin {
         child: new Column(
           children: <Widget>[
             new Text('热门推荐'),
-            new Row(
+            new Column(
               children: getIcons([0, 1, 2, 3], _icons),
             ),
             new Text('暴雪游戏'),
-            new Row(
+            new Column(
               children: getIcons([7, 8, 9, 10], _icons),
             ),
           ],
@@ -115,11 +127,11 @@ class _Community extends State<Community> with TickerProviderStateMixin {
         child: new Column(
           children: <Widget>[
             new Text('网页游戏'),
-            new Row(
+            new Column(
               children: getIcons([5, 6, 7, 8], _icons),
             ),
             new Text('手机游戏'),
-            new Row(
+            new Column(
               children: getIcons([9, 10, 1, 2], _icons),
             ),
           ],
@@ -130,11 +142,11 @@ class _Community extends State<Community> with TickerProviderStateMixin {
         child: new Column(
           children: <Widget>[
             new Text('精选'),
-            new Row(
+            new Column(
               children: getIcons([16, 15, 14, 13], _icons),
             ),
             new Text('软硬件'),
-            new Row(
+            new Column(
               children: getIcons([12, 11, 10, 9], _icons),
             ),
           ],
@@ -174,14 +186,17 @@ class _Community extends State<Community> with TickerProviderStateMixin {
 }
 
 getIcons(List<int> keys, List<ColumnIcon> list) {
-  print(keys);
-
-  List<ColumnIcon> r = keys.map((key){
-    print(key);
-    print(list[key]);
-    var m = list[key];
-    return m;
-
-    }).toList();
-  return r;
+  int l = keys.length;
+  int n = (l / 4).ceil();
+  List<Row> result = [];
+  for(int i = 0; i< n; i++) {
+    int end = ((i + 1)*4 > keys.length) ? keys.length : ((i + 1) * 4);
+    result.add(
+      new Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: keys.getRange(i*4, end).map((key) => list[key]).toList(),
+      )
+    );
+  }
+  return result;
 }

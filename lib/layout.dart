@@ -13,7 +13,7 @@ class Layout extends StatefulWidget {
 }
 
 class _Layout extends State<Layout> with TickerProviderStateMixin {
-  int _currentIndex = 1;
+  int _currentIndex = 2;
   List<StatefulWidget> _pages;
   List<NavigationIconView> _icons;
   StatefulWidget _currentPage;
