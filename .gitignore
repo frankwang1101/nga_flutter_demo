@@ -3,6 +3,10 @@
 
 .packages
 .pub/
+.vscode/*
+.vscode
+.vscode/
+settings.json
 
 build/
 

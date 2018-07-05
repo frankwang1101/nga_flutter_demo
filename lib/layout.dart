@@ -3,6 +3,7 @@ import './components/navigation_icon_view.dart';
 import './me/index.dart';
 import './recommand/index.dart';
 import './rate/index.dart';
+import './community/index.dart';
 
 class Layout extends StatefulWidget {
   @override
@@ -12,7 +13,7 @@ class Layout extends StatefulWidget {
 }
 
 class _Layout extends State<Layout> with TickerProviderStateMixin {
-  int _currentIndex = 0;
+  int _currentIndex = 1;
   List<StatefulWidget> _pages;
   List<NavigationIconView> _icons;
   StatefulWidget _currentPage;
@@ -22,8 +23,9 @@ class _Layout extends State<Layout> with TickerProviderStateMixin {
     super.initState();
     _pages = <StatefulWidget>[
       new Recommand(),
-      new Personal(),
+      new Community(),
       new Rate(),
+      new Personal(),
     ];
     _icons = <NavigationIconView>[
       new NavigationIconView(
@@ -41,11 +43,11 @@ class _Layout extends State<Layout> with TickerProviderStateMixin {
         text: new Text('评分'),
         vsync: this
       ),
-      new NavigationIconView(
-        icon: new Icon(Icons.computer),
-        text: new Text('赛事'),
-        vsync: this
-      ),
+      // new NavigationIconView(
+      //   icon: new Icon(Icons.computer),
+      //   text: new Text('赛事'),
+      //   vsync: this
+      // ),
       new NavigationIconView(
         icon: new Icon(Icons.person),
         text: new Text('我的'),

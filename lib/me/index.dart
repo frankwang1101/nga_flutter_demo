@@ -8,7 +8,6 @@ class Personal extends StatefulWidget {
   }
 }
 
-rgb(r, g, b, [o = 1.0]) => Color.fromRGBO(r, g, b, o);
 
 class LabelContainer extends StatelessWidget {
   IconData icon;
@@ -42,7 +41,7 @@ class _Personal extends State<Personal> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return new MaterialApp(
         home: new Scaffold(
-            backgroundColor: rgb(243, 235, 206, 1.0),
+            backgroundColor: ybgc,
             body: new Center(
                 child: new Stack(
               children: <Widget>[

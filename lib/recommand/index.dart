@@ -6,8 +6,9 @@ class ColType {
   String title;
   String desc;
   String imgSrc;
+  String userName;
 
-  ColType(this.uid, this.title, this.desc, this.imgSrc);
+  ColType(this.uid, this.title, this.userName, this.desc, this.imgSrc);
 }
 
 class RecColumn extends StatelessWidget {
@@ -19,10 +20,37 @@ class RecColumn extends StatelessWidget {
   Widget build(BuildContext context) {
     return new Scaffold(
       body: new Container(
+        height: 160.0,
+        constraints: BoxConstraints.expand(),
+        decoration: new BoxDecoration(color: Colors.yellowAccent),
         child: new Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
             new Container(
-              child: new Image.asset('lib/assets/football.png'),
+              height: 110.0,
+              decoration: BoxDecoration(color: Colors.pink),
+              child: new Stack(
+                alignment: Alignment.bottomCenter,
+                children: <Widget>[
+                  new Center(
+                    child: new Image.asset(
+                      'lib/assets/football.png',
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  new Positioned(
+                    child: new Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text(
+                          _col.userName,
+                          textAlign: TextAlign.center,
+                        ),
+                      ],
+                    ),
+                  )
+                ],
+              ),
             ),
             new Container(
               child: new Text(_col.title),
@@ -55,39 +83,32 @@ class _Recommand extends State<Recommand> with TickerProviderStateMixin {
     _tabTitles = <String>['全部', '魔兽', '怪物猎人', '生化危机'];
     List<Container> _cols = [
       new Container(
-        height: 80.0,
-        child: new RecColumn(new ColType(12341, 'title1', 'desc1', null)),
-        decoration: boxGrey,
+        height: 160.0,
+        child: new RecColumn(new ColType(12341, '小鸟', 'title1', 'desc1', null)),
       ),
       new Container(
-        height: 80.0,
-        child: new RecColumn(new ColType(12342, 'title2', 'desc2', null)),
-        decoration: boxGrey,
+        height: 160.0,
+        child: new RecColumn(new ColType(12342, '小鸟', 'title2', 'desc2', null)),
       ),
       new Container(
-        height: 80.0,
-        child: new RecColumn(new ColType(12343, 'title3', 'desc3', null)),
-        decoration: boxGrey,
+        height: 160.0,
+        child: new RecColumn(new ColType(12343, '小鸟', 'title3', 'desc3', null)),
       ),
       new Container(
-        height: 80.0,
-        child: new RecColumn(new ColType(12344, 'title4', 'desc4', null)),
-        decoration: boxGrey,
+        height: 160.0,
+        child: new RecColumn(new ColType(12344, '小鸟', 'title4', 'desc4', null)),
       ),
       new Container(
-        height: 80.0,
-        child: new RecColumn(new ColType(12345, 'title5', 'desc5', null)),
-        decoration: boxGrey,
+        height: 160.0,
+        child: new RecColumn(new ColType(12345, '小鸟', 'title5', 'desc5', null)),
       ),
       new Container(
-        height: 80.0,
-        child: new RecColumn(new ColType(12346, 'title6', 'desc6', null)),
-        decoration: boxGrey,
+        height: 160.0,
+        child: new RecColumn(new ColType(12346, '小鸟', 'title6', 'desc6', null)),
       ),
       new Container(
-        height: 80.0,
-        child: new RecColumn(new ColType(12347, 'title7', 'desc7', null)),
-        decoration: boxGrey,
+        height: 160.0,
+        child: new RecColumn(new ColType(12347, '小鸟', 'title7', 'desc7', null)),
       ),
     ];
 
