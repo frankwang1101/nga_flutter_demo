@@ -1,17 +1,5 @@
 import 'package:flutter/material.dart';
-
-class Info{
-  String title;
-  int id;
-  int uid;
-  String username;
-  DateTime updateTime;
-  int replyNum;
-  String tag;
-
-  Info(this.id, this.title, this.tag, this.uid, this.username, this.updateTime, this.replyNum);
-
-}
+import '../config/baseType.dart';
 
 
 class PostColumn extends StatelessWidget {

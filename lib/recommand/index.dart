@@ -1,18 +1,9 @@
 import 'package:flutter/material.dart';
 import '../config/globalStyle.dart';
-
-class ColType {
-  int uid;
-  String title;
-  String desc;
-  String imgSrc;
-  String userName;
-
-  ColType(this.uid, this.title, this.userName, this.desc, this.imgSrc);
-}
+import '../config/baseType.dart';
 
 class RecColumn extends StatelessWidget {
-  final ColType _col;
+  final RecommandItem _col;
 
   RecColumn(this._col);
 
@@ -84,31 +75,31 @@ class _Recommand extends State<Recommand> with TickerProviderStateMixin {
     List<Container> _cols = [
       new Container(
         height: 160.0,
-        child: new RecColumn(new ColType(12341, '小鸟', 'title1', 'desc1', null)),
+        child: new RecColumn(new RecommandItem(12341, '小鸟', 'title1', 'desc1', null)),
       ),
       new Container(
         height: 160.0,
-        child: new RecColumn(new ColType(12342, '小鸟', 'title2', 'desc2', null)),
+        child: new RecColumn(new RecommandItem(12342, '小鸟', 'title2', 'desc2', null)),
       ),
       new Container(
         height: 160.0,
-        child: new RecColumn(new ColType(12343, '小鸟', 'title3', 'desc3', null)),
+        child: new RecColumn(new RecommandItem(12343, '小鸟', 'title3', 'desc3', null)),
       ),
       new Container(
         height: 160.0,
-        child: new RecColumn(new ColType(12344, '小鸟', 'title4', 'desc4', null)),
+        child: new RecColumn(new RecommandItem(12344, '小鸟', 'title4', 'desc4', null)),
       ),
       new Container(
         height: 160.0,
-        child: new RecColumn(new ColType(12345, '小鸟', 'title5', 'desc5', null)),
+        child: new RecColumn(new RecommandItem(12345, '小鸟', 'title5', 'desc5', null)),
       ),
       new Container(
         height: 160.0,
-        child: new RecColumn(new ColType(12346, '小鸟', 'title6', 'desc6', null)),
+        child: new RecColumn(new RecommandItem(12346, '小鸟', 'title6', 'desc6', null)),
       ),
       new Container(
         height: 160.0,
-        child: new RecColumn(new ColType(12347, '小鸟', 'title7', 'desc7', null)),
+        child: new RecColumn(new RecommandItem(12347, '小鸟', 'title7', 'desc7', null)),
       ),
     ];
 

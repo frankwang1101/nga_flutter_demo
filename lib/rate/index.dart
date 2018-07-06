@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../config/globalStyle.dart';
+import '../config/baseType.dart';
 import '../config/mock.dart';
 
 class Rate extends StatefulWidget {
@@ -7,18 +8,6 @@ class Rate extends StatefulWidget {
   State<Rate> createState() {
     return new _Rate();
   }
-}
-
-class RateType {
-  int rank;
-  double rate;
-  String name;
-  String url;
-  String releaseTime;
-  List<int> consoles;
-
-  RateType(this.rank, this.rate, this.name, this.url, this.releaseTime,
-      this.consoles);
 }
 
 class RateComponent1 extends StatelessWidget {

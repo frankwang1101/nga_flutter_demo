@@ -8,7 +8,6 @@ class Personal extends StatefulWidget {
   }
 }
 
-
 class LabelContainer extends StatelessWidget {
   IconData icon;
   String title;
@@ -21,13 +20,15 @@ class LabelContainer extends StatelessWidget {
       padding: EdgeInsets.only(left: 18.0),
       child: new Row(
         children: <Widget>[
-          new Icon(icon, color: rgb(18, 183, 245),),
+          new Icon(
+            icon,
+            color: rgb(18, 183, 245),
+          ),
           new Container(
             margin: EdgeInsets.only(left: 4.0),
             child: new Text(
               title,
-              style: TextStyle(
-                  fontSize: 16.0, color: rgb(50, 50, 50, 1.0)),
+              style: TextStyle(fontSize: 16.0, color: rgb(50, 50, 50, 1.0)),
             ),
           )
         ],
@@ -82,8 +83,7 @@ class _Personal extends State<Personal> with TickerProviderStateMixin {
                                   new Text(
                                     '24005061',
                                     style: new TextStyle(
-                                        color:
-                                            rgb(183, 180, 173, 1.0),
+                                        color: rgb(183, 180, 173, 1.0),
                                         fontSize: 16.0),
                                   )
                                 ],
@@ -102,8 +102,76 @@ class _Personal extends State<Personal> with TickerProviderStateMixin {
                         ],
                       ),
                     ),
-                    new Text('mine label'),
-                    new Text('personal action btn'),
+                    new Container(
+                      child: new Column(
+                        children: <Widget>[
+                          new Row(
+                            children: <Widget>[
+                              new MyIcon('主题', 'imgSrc'),
+                              new MyIcon('回复', 'imgSrc'),
+                              new MyIcon('评分', 'imgSrc'),
+                              new MyIcon('收藏', 'imgSrc'),
+                            ],
+                          ),
+                          new Row(
+                            children: <Widget>[
+                              new MyIcon('签名', 'imgSrc'),
+                              new MyIcon('提醒', 'imgSrc'),
+                              new MyIcon('短消息', 'imgSrc'),
+                              new MyIcon('浏览历史', 'imgSrc'),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                    new Container(
+                      decoration: BoxDecoration(color: rgb(255, 247, 227, 1.0)),
+                      child: new Column(
+                        children: <Widget>[
+                          new LabelContainer(Icons.person, '发现'),
+                        ],
+                      ),
+                    ),
+                    new Container(
+                      child: new Column(
+                        children: <Widget>[
+                          new Row(
+                            children: <Widget>[
+                              new MyIcon('热门主题', 'imgSrc'),
+                              new MyIcon('日常任务', 'imgSrc'),
+                              new MyIcon('商城', 'imgSrc'),
+                              new MyIcon('扫一扫', 'imgSrc'),
+                            ],
+                          ),
+                          new Row(
+                            children: <Widget>[
+                              new MyIcon('栏目', 'imgSrc'),
+                              new MyIcon('组队', 'imgSrc'),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                    new Container(
+                      decoration: BoxDecoration(color: rgb(255, 247, 227, 1.0)),
+                      child: new Column(
+                        children: <Widget>[
+                          new LabelContainer(Icons.person, '工具'),
+                        ],
+                      ),
+                    ),
+                    new Container(
+                      child: new Column(
+                        children: <Widget>[
+                          new Row(
+                            children: <Widget>[
+                              new MyIcon('魔兽世界', 'imgSrc'),
+                              new MyIcon('CS:GO', 'imgSrc'),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
                     new Text('find label'),
                     new Text('personal explore info'),
                     new Text('tool label'),
@@ -127,5 +195,32 @@ class _Personal extends State<Personal> with TickerProviderStateMixin {
                 ),
               ],
             ))));
+  }
+}
+
+class MyIcon extends StatelessWidget {
+  String imgSrc;
+  String title;
+
+  MyIcon(this.title, this.imgSrc);
+
+  @override
+  Widget build(BuildContext context) {
+    return new Container(
+      width: 50.0,
+      height: 80.0,
+      child: new Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          new Image(
+            image: null,
+            width: 50.0,
+            height: 50.0,
+          ),
+          new Text(title)
+        ],
+      ),
+    );
   }
 }
