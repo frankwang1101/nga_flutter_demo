@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import '../config/globalStyle.dart';
-import 'dart:math';
+import '../columns/column.dart';
 
 class Community extends StatefulWidget {
   @override
   State<Community> createState() {
-    // TODO: implement createState
     return new _Community();
   }
 }
@@ -19,23 +18,34 @@ class ColumnIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Container(
-      width: 80.0,
-      margin: EdgeInsets.only(top: 15.0),
-      child: new Column(
-        children: <Widget>[
-          new Container(
-            margin: EdgeInsets.only(bottom: 10.0),
-            child: new Image(
-            image: new NetworkImage(imgSrc),
-            width: 50.0,
-            height: 50.0,
-            fit: BoxFit.cover,
+        width: 80.0,
+        margin: EdgeInsets.only(top: 15.0),
+        child: new FlatButton(
+          onPressed: (){
+            Navigator.push(context, new MaterialPageRoute(
+              builder: (context){
+                return new ColumnPage();
+              }
+            ));
+          },
+          child: new Column(
+            children: <Widget>[
+              new Container(
+                margin: EdgeInsets.only(bottom: 10.0),
+                child: new Image(
+                  image: new NetworkImage(imgSrc),
+                  width: 50.0,
+                  height: 50.0,
+                  fit: BoxFit.cover,
+                ),
+              ),
+              new Text(
+                text,
+                textAlign: TextAlign.center,
+              )
+            ],
           ),
-          ),
-          new Text(text, textAlign: TextAlign.center,)
-        ],
-      ),
-    );
+        ));
   }
 }
 
@@ -99,7 +109,10 @@ class _Community extends State<Community> with TickerProviderStateMixin {
           crossAxisAlignment: CrossAxisAlignment.start,
           // mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            new Text('长按拖动可以修改排序', textAlign: TextAlign.left,),
+            new Text(
+              '长按拖动可以修改排序',
+              textAlign: TextAlign.left,
+            ),
             new Column(
               // mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: getIcons([14, 0, 16, 7, 2, 6, 3, 4], _icons),
@@ -189,14 +202,12 @@ getIcons(List<int> keys, List<ColumnIcon> list) {
   int l = keys.length;
   int n = (l / 4).ceil();
   List<Row> result = [];
-  for(int i = 0; i< n; i++) {
-    int end = ((i + 1)*4 > keys.length) ? keys.length : ((i + 1) * 4);
-    result.add(
-      new Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: keys.getRange(i*4, end).map((key) => list[key]).toList(),
-      )
-    );
+  for (int i = 0; i < n; i++) {
+    int end = ((i + 1) * 4 > keys.length) ? keys.length : ((i + 1) * 4);
+    result.add(new Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: keys.getRange(i * 4, end).map((key) => list[key]).toList(),
+    ));
   }
   return result;
 }

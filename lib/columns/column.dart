@@ -1,27 +1,49 @@
 import 'package:flutter/material.dart';
+import '../config/baseType.dart';
+import '../config/globalStyle.dart';
+import '../components/postItem.dart';
+import './postDetail.dart';
 
-class Column extends StatefulWidget {
+class ColumnPage extends StatefulWidget {
   @override
-  State<Column> createState() {
+  State<ColumnPage> createState() {
     // TODO: implement createState
-    return null;
+    return new _Column();
   }
 }
 
-class _Column extends State<Column> with TickerProviderStateMixin {
+class _Column extends State<ColumnPage> with TickerProviderStateMixin {
+
+  List<PostColumn> _records;
+  int _currentPage;
+
+  @override
+    void initState() {
+      super.initState();
+      _currentPage = 1;
+      _records = <PostColumn>[
+
+      ];
+    }
+
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return new MaterialApp(
       home: new ListView(
         shrinkWrap: true,
-        padding: const EdgeInsets.all(20.0),
-        children: <Widget>[
-          const Text('I\'m dedicating every day to you'),
-          const Text('Domestic life was never quite my style'),
-          const Text('When you smile, you knock me out, I fall apart'),
-          const Text('And I thought I was so smart'),
-        ],
+        padding: const EdgeInsets.all(8.0),
+        children: _records.map((PostColumn post){
+          return new FlatButton(
+            onPressed: (){
+              Navigator.push(context, new MaterialPageRoute(
+                builder: (context){
+                  return new Post();
+                }
+              ));
+            },
+            child: post,
+          );
+        }).toList(),
       ),
     );
   }
