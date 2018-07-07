@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../config/globalStyle.dart';
 import '../config/baseType.dart';
 import '../config/mock.dart';
+import '../components/common.dart';
 
 class Rate extends StatefulWidget {
   @override
@@ -168,16 +169,8 @@ class _Rate extends State<Rate> with TickerProviderStateMixin {
         home: new DefaultTabController(
       length: _tabs.length,
       child: new Scaffold(
-        appBar: new AppBar(
-          title: new Text('评分'),
-          bottom: new TabBar(
-            tabs: _tabTitles
-                .map((String title) => new Tab(
-                      text: title,
-                    ))
-                .toList(),
-          ),
-        ),
+        backgroundColor: ybgc,
+        appBar: commonAppBar(_tabTitles),
         body: new TabBarView(
             children: _tabs
                 .map((tab) => new Padding(

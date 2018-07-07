@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../config/globalStyle.dart';
 import '../columns/column.dart';
+import '../components/common.dart';
 
 class Community extends StatefulWidget {
   @override
@@ -176,15 +177,7 @@ class _Community extends State<Community> with TickerProviderStateMixin {
       length: _tabs.length,
       child: new Scaffold(
         backgroundColor: ybgc,
-        appBar: new AppBar(
-          // title: const Text('Tabbed AppBar'),
-          bottom: new TabBar(
-            isScrollable: true,
-            tabs: _tabTitles.map((title) {
-              return new Tab(text: title);
-            }).toList(),
-          ),
-        ),
+        appBar: commonAppBar(_tabTitles),
         body: new TabBarView(
           children: _tabs.map((tab) {
             return new Padding(

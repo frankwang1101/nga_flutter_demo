@@ -4,6 +4,7 @@
 
 import 'package:flutter/material.dart';
 import './layout.dart';
+import 'package:flutter/services.dart';
 
 class Nga extends StatelessWidget {
   @override
@@ -15,5 +16,8 @@ class Nga extends StatelessWidget {
 }
 
 void main() {
+  // SystemChrome.setSystemUIOverlayStyle(new SystemUiOverlayStyle(
+  //   statusBarIconBrightness: Brightness.dark
+  // ));
   runApp(new Nga());
 }

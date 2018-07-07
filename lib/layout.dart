@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import './components/navigation_icon_view.dart';
+import './config/globalStyle.dart';
 import './me/index.dart';
 import './recommand/index.dart';
 import './rate/index.dart';
@@ -13,7 +15,7 @@ class Layout extends StatefulWidget {
 }
 
 class _Layout extends State<Layout> with TickerProviderStateMixin {
-  int _currentIndex = 2;
+  int _currentIndex = 0;
   List<StatefulWidget> _pages;
   List<NavigationIconView> _icons;
   StatefulWidget _currentPage;
@@ -62,10 +64,9 @@ class _Layout extends State<Layout> with TickerProviderStateMixin {
     final BottomNavigationBar bottomNavigationBar = new BottomNavigationBar(
       items: _icons.map((v) => v.item).toList(),
       currentIndex: _currentIndex,
-      fixedColor: Colors.yellowAccent,
+      fixedColor: activeColor,
       type: BottomNavigationBarType.fixed,
       onTap: (int index){
-        print('tap $index');
         setState(() {
           _icons[_currentIndex].controller.reverse();
           _currentIndex = index;
@@ -75,11 +76,17 @@ class _Layout extends State<Layout> with TickerProviderStateMixin {
       },
     );
     return new MaterialApp(
+      theme: new ThemeData(
+        canvasColor: Colors.green
+      ),
       home: new Scaffold(
+        backgroundColor: ybgc,
         body: new Center(
           child: _currentPage,
-        ),
-        bottomNavigationBar: bottomNavigationBar,
+        ), bottomNavigationBar: new Theme( data: Theme.of(context).copyWith(
+          canvasColor: sybgc,
+          primaryColor: Colors.red
+        ), child: bottomNavigationBar,),
       ),
     );
   }

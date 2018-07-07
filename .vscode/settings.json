@@ -5,7 +5,7 @@
   "includeLanguages": {
     "vue-html": "html"
   },
-  "window.zoomLevel": 0,
+  "window.zoomLevel": 1,
   "prettier.semi": true,
   "prettier.singleQuote": true,
   "prettier.eslintIntegration": true,

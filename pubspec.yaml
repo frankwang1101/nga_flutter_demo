@@ -28,6 +28,21 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
    - lib/assets/football.png
+   - lib/assets/mine/mine_theme.png
+   - lib/assets/mine/mine_reply.png
+   - lib/assets/mine/mine_rate.png
+   - lib/assets/mine/mine_favorites.png
+   - lib/assets/mine/mine_sign.png
+   - lib/assets/mine/mine_remind.png
+   - lib/assets/mine/mine_remind_red.png
+   - lib/assets/mine/mine_message.png
+   - lib/assets/mine/mine_message_with_red.png
+   - lib/assets/mine/mine_history.png
+   - lib/assets/mine/mine_hot.png
+   - lib/assets/mine/mine_task.png
+   - lib/assets/mine/mine_shop.png
+   - lib/assets/mine/mine_scan.png
+   - lib/assets/mine/mine_csgo.png
   #  - images/a_dot_burr.jpeg
   #  - images/a_dot_ham.jpeg
 

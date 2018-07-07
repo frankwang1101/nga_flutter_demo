@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import '../config/globalStyle.dart';
+import './assetMap.dart';
+import 'package:flutter/services.dart';
 
 class Personal extends StatefulWidget {
   @override
@@ -16,7 +18,7 @@ class LabelContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return new Container(
-      height: 43.3,
+      height: 40.0,
       padding: EdgeInsets.only(left: 18.0),
       child: new Row(
         children: <Widget>[
@@ -28,7 +30,7 @@ class LabelContainer extends StatelessWidget {
             margin: EdgeInsets.only(left: 4.0),
             child: new Text(
               title,
-              style: TextStyle(fontSize: 16.0, color: rgb(50, 50, 50, 1.0)),
+              style: TextStyle(fontSize: 16.0, color: rgb(50,50,50)),
             ),
           )
         ],
@@ -53,7 +55,6 @@ class _Personal extends State<Personal> with TickerProviderStateMixin {
                     ),
                     new Container(
                       height: 102.0,
-                      decoration: boxGrey,
                       padding: EdgeInsets.all(16.0),
                       // width: 400.0,
                       child: new Row(
@@ -62,12 +63,10 @@ class _Personal extends State<Personal> with TickerProviderStateMixin {
                           new Container(
                             height: 70.4,
                             width: 70.4,
-                            decoration: boxGrey,
                             child: new Image.asset('lib/assets/football.png'),
                           ),
                           new Expanded(
                             child: new Container(
-                              decoration: boxGrey,
                               margin: EdgeInsets.only(left: 10.0),
                               padding: EdgeInsets.only(top: 9.0, bottom: 9.0),
                               child: new Column(
@@ -103,23 +102,16 @@ class _Personal extends State<Personal> with TickerProviderStateMixin {
                       ),
                     ),
                     new Container(
+                      padding: EdgeInsets.only(top: 5.0, bottom: 5.0),
                       child: new Column(
                         children: <Widget>[
                           new Row(
-                            children: <Widget>[
-                              new MyIcon('主题', 'imgSrc'),
-                              new MyIcon('回复', 'imgSrc'),
-                              new MyIcon('评分', 'imgSrc'),
-                              new MyIcon('收藏', 'imgSrc'),
-                            ],
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: attachEvent(mineAsset.values.toList().getRange(0, 4)),
                           ),
                           new Row(
-                            children: <Widget>[
-                              new MyIcon('签名', 'imgSrc'),
-                              new MyIcon('提醒', 'imgSrc'),
-                              new MyIcon('短消息', 'imgSrc'),
-                              new MyIcon('浏览历史', 'imgSrc'),
-                            ],
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: attachEvent(mineAsset.values.toList().getRange(4, 8)),
                           ),
                         ],
                       ),
@@ -133,26 +125,18 @@ class _Personal extends State<Personal> with TickerProviderStateMixin {
                       ),
                     ),
                     new Container(
+                      padding: EdgeInsets.only(top: 5.0, bottom: 5.0),
                       child: new Column(
                         children: <Widget>[
                           new Row(
-                            children: <Widget>[
-                              new MyIcon('热门主题', 'imgSrc'),
-                              new MyIcon('日常任务', 'imgSrc'),
-                              new MyIcon('商城', 'imgSrc'),
-                              new MyIcon('扫一扫', 'imgSrc'),
-                            ],
-                          ),
-                          new Row(
-                            children: <Widget>[
-                              new MyIcon('栏目', 'imgSrc'),
-                              new MyIcon('组队', 'imgSrc'),
-                            ],
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: attachEvent(mineAsset.values.toList().getRange(8, 12)),
                           ),
                         ],
                       ),
                     ),
                     new Container(
+                      // height: 40.0,
                       decoration: BoxDecoration(color: rgb(255, 247, 227, 1.0)),
                       child: new Column(
                         children: <Widget>[
@@ -161,26 +145,21 @@ class _Personal extends State<Personal> with TickerProviderStateMixin {
                       ),
                     ),
                     new Container(
+                      padding: EdgeInsets.only(top: 5.0, bottom: 5.0),
                       child: new Column(
                         children: <Widget>[
                           new Row(
                             children: <Widget>[
-                              new MyIcon('魔兽世界', 'imgSrc'),
-                              new MyIcon('CS:GO', 'imgSrc'),
+                              new MyIcon(mineAsset["csgo"]),
                             ],
                           ),
                         ],
                       ),
                     ),
-                    new Text('find label'),
-                    new Text('personal explore info'),
-                    new Text('tool label'),
-                    new Text('personal tool btn'),
                   ],
                 ),
                 new Positioned(
                   child: new Container(
-                    decoration: boxGrey,
                     width: 80.0,
                     child: new Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -199,28 +178,40 @@ class _Personal extends State<Personal> with TickerProviderStateMixin {
 }
 
 class MyIcon extends StatelessWidget {
-  String imgSrc;
-  String title;
+  Map<String, String> _resouce;
 
-  MyIcon(this.title, this.imgSrc);
+  MyIcon(this._resouce);
 
   @override
   Widget build(BuildContext context) {
     return new Container(
-      width: 50.0,
-      height: 80.0,
+      width: 90.0,
+      height: 70.0,
       child: new Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           new Image(
-            image: null,
-            width: 50.0,
-            height: 50.0,
+            image: new AssetImage(_resouce[imgKey]),
+            width: 40.0,
+            height: 40.0,
           ),
-          new Text(title)
+          new Text(_resouce[titleKey])
         ],
       ),
     );
   }
+}
+
+attachEvent(Iterable list){
+  return list.map((m) => new Container(
+    width: 90.0,
+    height: 70.0,
+    child: new FlatButton(
+    onPressed: (){
+      print(m["type"]);
+    },
+    child: new MyIcon(m),
+  ),
+  )).toList();
 }
