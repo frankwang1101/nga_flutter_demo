@@ -160,17 +160,36 @@ class _Personal extends State<Personal> with TickerProviderStateMixin {
                 ),
                 new Positioned(
                   child: new Container(
-                    width: 80.0,
+                    width: 100.0,
                     child: new Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: <Widget>[
-                        new Icon(Icons.highlight),
-                        new Icon(Icons.settings)
+                        new Container(
+                          height: 36.0,
+                          width: 36.0,
+                          // margin: EdgeInsets.only(right: 10.0),
+                          decoration: BoxDecoration(
+                            color: sybgc,
+                            borderRadius: BorderRadius.all(Radius.circular(36.0)),
+                            border: Border.all(width: 0.2, color: Colors.grey)
+                          ),
+                          child: new Icon(Icons.highlight),
+                        ),
+                        new Container(
+                          height: 36.0,
+                          width: 36.0,
+                          decoration: BoxDecoration(
+                            color: sybgc,
+                            borderRadius: BorderRadius.all(Radius.circular(36.0)),
+                            border: Border.all(width: 0.2, color: Colors.grey)
+                          ),
+                          child: new Icon(Icons.settings)
+                        ),
                       ],
                     ),
                   ),
                   right: 20.0,
-                  top: 110.0,
+                  top: 104.0,
                 ),
               ],
             ))));
