@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../config/globalStyle.dart';
 import '../config/baseType.dart';
 import '../config/mock.dart';
+import '../columns/postDetail.dart';
 
 class RecColumn extends StatelessWidget {
   final RecommandItem _col;
@@ -56,17 +57,27 @@ class _Recommand extends State<Recommand> with TickerProviderStateMixin {
   void initState() {
     super.initState();
     _tabTitles = <String>['全部', '魔兽', '怪物猎人', '生化危机'];
-    List<Container> _cols = recommandList.map((Map<String, String> data) {
-      return new Container(
+    List<FlatButton> _cols = recommandList.map((Map<String, String> data) {
+      return new FlatButton(
+        padding: EdgeInsets.all(0.0),
+        onPressed: (){
+          Navigator.push(context, new MaterialPageRoute(
+            builder: (context){
+              return new Post();
+            }
+          ));
+        },
+        child: new Container(
         child: RecColumn(new RecommandItem(int.parse(data["uid"]),
             data["title"], data["author"], data["dialog"], data["imgSrc"])),
+      ),
       );
     }).toList();
 
     _pages = <Widget>[
-      // new Container(
       new ListView(
         scrollDirection: Axis.vertical,
+        padding: EdgeInsets.all(0.0),
         children: _cols,
       ),
       // new Container(

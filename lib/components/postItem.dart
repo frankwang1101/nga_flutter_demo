@@ -3,9 +3,9 @@ import '../config/baseType.dart';
 
 
 class PostColumn extends StatelessWidget {
-  Info _info;
+  PostRecord _info;
 
-  PostColumn({Info info}) : _info = info;
+  PostColumn({PostRecord info}) : _info = info;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class PostColumn extends StatelessWidget {
           new Row(
             children: <Widget>[
               new Container(
-                child: new Text('${_info.username}[${_info.tag}]'),
+                child: new Text('${_info.username}'),
               ),
               new Container(
                 child: new Row(

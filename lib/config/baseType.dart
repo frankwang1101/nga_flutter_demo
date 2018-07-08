@@ -8,11 +8,14 @@ class User {
   int uid;
   String username;
   int level;
-  double reputaion;
+  int levelExp;
+  double reputation;
   int posts;
   Gender gender;
   DateTime createTime;
-  DateTime updateTime;
+
+  User(this.uid, this.username, this.level, this.levelExp, this.reputation, this.posts, this.gender, this.createTime);
+
 }
 
 // 帖子(详情)
@@ -26,19 +29,24 @@ class PostType {
   User user;
   int up;
   int down;
+
+  String floor;
+
+  PostType(this.uid, this.title, this.createTime, this.updateTime, this.content, this.tag, this.user, this.up, this.down, [this.floor]);
+
 }
 
 // 帖子(列表)
-class Info{
-  String title;
-  int id;
+class PostRecord{
   int uid;
+  String title;
+  User user;
   String username;
   DateTime updateTime;
   int replyNum;
-  String tag;
+  // String tag;
 
-  Info(this.id, this.title, this.tag, this.uid, this.username, this.updateTime, this.replyNum);
+  PostRecord(this.uid, this.title, this.user, this.updateTime, this.replyNum);
 
 }
 
