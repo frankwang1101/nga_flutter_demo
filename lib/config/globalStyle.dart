@@ -15,3 +15,7 @@ btext(text, [margin = null, padding = null]) => new Container(
   child: new Text(text),
 );
 rgb(r, g, b, [o = 1.0]) => Color.fromRGBO(r, g, b, o);
+
+back(context){
+  Navigator.pop(context);
+}
