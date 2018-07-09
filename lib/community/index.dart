@@ -3,6 +3,7 @@ import '../config/globalStyle.dart';
 import '../columns/column.dart';
 import '../components/common.dart';
 import '../columns/postDetail.dart';
+import './iconAssets.dart';
 
 class Community extends StatefulWidget {
   @override
@@ -24,12 +25,10 @@ class ColumnIcon extends StatelessWidget {
         width: 80.0,
         margin: EdgeInsets.only(top: 15.0),
         child: new FlatButton(
-          onPressed: (){
-            Navigator.push(pctx, new MaterialPageRoute(
-              builder: (context){
-                return new ColumnPage();
-              }
-            ));
+          onPressed: () {
+            Navigator.push(pctx, new MaterialPageRoute(builder: (context) {
+              return new ColumnPage();
+            }));
           },
           child: new Column(
             children: <Widget>[
@@ -67,44 +66,11 @@ class _Community extends State<Community> with TickerProviderStateMixin {
       '手游页游',
       '网事杂谈',
     ];
-    _icons = <ColumnIcon>[
-      new ColumnIcon('网事杂谈',
-          'http://img4.nga.178.com/ngabbs/nga_classic/f/354.png.invert.png', context),
-      new ColumnIcon(
-          '大旋涡博物馆', 'http://img4.nga.178.com/ngabbs/nga_classic/f/-187579.png', context),
-      new ColumnIcon('二次元国家地理',
-          'http://img4.nga.178.com/ngabbs/nga_classic/f/-447601.png', context),
-      new ColumnIcon(
-          '模玩之魂', 'http://img4.nga.178.com/ngabbs/nga_classic/f/-84.png', context),
-      new ColumnIcon(
-          '小窗视界', 'http://img4.nga.178.com/ngabbs/nga_classic/f/-8725919.png', context),
-      new ColumnIcon(
-          '寂寞的车', 'http://img4.nga.178.com/ngabbs/nga_classic/f/-343809.png', context),
-      new ColumnIcon(
-          '音乐 影视', 'http://img4.nga.178.com/ngabbs/nga_classic/f/00.png', context),
-      new ColumnIcon(
-          '生命之杯', 'http://img4.nga.178.com/ngabbs/nga_classic/f/-81981.png', context),
-      new ColumnIcon(
-          '篮球', 'http://img4.nga.178.com/ngabbs/nga_classic/f/485.png', context),
-      new ColumnIcon(
-          '时尚消费', 'http://img4.nga.178.com/ngabbs/nga_classic/f/00.png', context),
-      new ColumnIcon(
-          '母婴育儿', 'http://img4.nga.178.com/ngabbs/nga_classic/f/00.png', context),
-      new ColumnIcon(
-          '宠物养成', 'http://img4.nga.178.com/ngabbs/nga_classic/f/-353371.png', context),
-      new ColumnIcon(
-          '发烧友', 'http://img4.nga.178.com/ngabbs/nga_classic/f/00.png', context),
-      new ColumnIcon(
-          '程序员职业交流', 'http://img4.nga.178.com/ngabbs/nga_classic/f/00.png', context),
-      new ColumnIcon(
-          '消费电子', 'http://img4.nga.178.com/ngabbs/nga_classic/f/00.png', context),
-      new ColumnIcon(
-          'IT新闻', 'http://img4.nga.178.com/ngabbs/nga_classic/f/124.png', context),
-      new ColumnIcon(
-          '硬件配置', 'http://img4.nga.178.com/ngabbs/nga_classic/f/102.png', context),
-      new ColumnIcon(
-          '二手交易', 'http://img4.nga.178.com/ngabbs/nga_classic/f/-4567100b.png', context),
-    ];
+    _icons = iconAssets.map(
+      (asset){
+        return new ColumnIcon(asset["label"], asset["iconSrc"], context);
+      }
+    ).toList();
     _tabs = [
       new Container(
         decoration: boxGrey,

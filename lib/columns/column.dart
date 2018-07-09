@@ -63,6 +63,49 @@ class _Column extends State<ColumnPage> with TickerProviderStateMixin {
     final titleTextSty = new TextStyle(color: Colors.black87, fontSize: 18.0);
     return new MaterialApp(
       home: new Scaffold(
+        drawer: new Directionality(
+          textDirection: TextDirection.rtl,
+          child: new Drawer(
+            child: new Container(
+              child: new Column(
+                children: <Widget>[
+                  new Container(
+                    child: new Row(
+                      children: <Widget>[
+                        new Icon(Icons.search),
+                        new Text('提醒')
+                      ],
+                    ),
+                  ),
+                  new Container(
+                    child: new Row(
+                      children: <Widget>[
+                        new Icon(Icons.search),
+                        new Text('提醒')
+                      ],
+                    ),
+                  ),
+                  new Container(
+                    child: new Row(
+                      children: <Widget>[
+                        new Icon(Icons.search),
+                        new Text('提醒')
+                      ],
+                    ),
+                  ),
+                  new Container(
+                    child: new Row(
+                      children: <Widget>[
+                        new Icon(Icons.search),
+                        new Text('提醒')
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
         floatingActionButton: new Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: <Widget>[
@@ -88,11 +131,9 @@ class _Column extends State<ColumnPage> with TickerProviderStateMixin {
               backgroundColor: Colors.black54,
               mini: true,
               onPressed: () {
-                Navigator.push(context, new MaterialPageRoute(
-                  builder: (ctx){
-                    return new AddPage();
-                  }
-                ));
+                Navigator.push(context, new MaterialPageRoute(builder: (ctx) {
+                  return new AddPage();
+                }));
               },
               child: new Icon(Icons.edit),
             )
@@ -106,7 +147,7 @@ class _Column extends State<ColumnPage> with TickerProviderStateMixin {
             },
             child: new Container(
               child: new Center(
-                child: new Icon(Icons.arrow_left),
+                child: new Icon(Icons.chevron_left),
               ),
             ),
           ),

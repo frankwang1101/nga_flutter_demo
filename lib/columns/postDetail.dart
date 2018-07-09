@@ -109,10 +109,12 @@ class _Post extends State<Post> with TickerProviderStateMixin {
                     border: bGrey),
                 width: 50.0,
                 height: 24.0,
-                child: new Text(
-                  _details.floor,
-                  textAlign: TextAlign.center,
-                  style: new TextStyle(color: Colors.black),
+                child: new Center(
+                  child: new Text(
+                    _details.floor,
+                    textAlign: TextAlign.center,
+                    style: new TextStyle(color: Colors.black),
+                  ),
                 ),
               ),
             ),
@@ -142,8 +144,8 @@ class _Post extends State<Post> with TickerProviderStateMixin {
                       fontSize: 24.0, fontWeight: FontWeight.w500),
                 ),
               ),
-              new Container(
-                height: 510.0,
+              new Expanded(
+                // height: 510.0,
                 child: new ListView(
                   children: _replies.map((PostType type) {
                     return new Container(
@@ -151,34 +153,36 @@ class _Post extends State<Post> with TickerProviderStateMixin {
                       children: <Widget>[
                         new Container(
                           padding: EdgeInsets.all(10.0),
-                          decoration: BoxDecoration(border: BorderDirectional(
-                            bottom: BorderSide(
-                              width: 1.0,
-                              color: Colors.grey
-                            )
-                          )),
+                          decoration: BoxDecoration(
+                              border: BorderDirectional(
+                                  bottom: BorderSide(
+                                      width: 1.0, color: Colors.grey))),
                           child: new Row(
                             children: <Widget>[
                               new Container(
                                 margin: EdgeInsets.only(right: 4.0),
                                 child: new CircleAvatar(
-                                radius: 22.0,
-                              ),
+                                  radius: 22.0,
+                                ),
                               ),
                               new Expanded(
                                 child: new Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: <Widget>[
                                     new Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
                                       children: <Widget>[
-                                        new Text(type.user.username, style: new TextStyle(
-                                          color: activeColor,
-                                          fontSize: 16.0
-                                        ),),
-                                        new Text(type.floor, style: TextStyle(
-                                          color: Colors.grey
-                                        ),),
+                                        new Text(
+                                          type.user.username,
+                                          style: new TextStyle(
+                                              color: activeColor,
+                                              fontSize: 16.0),
+                                        ),
+                                        new Text(
+                                          type.floor,
+                                          style: TextStyle(color: Colors.grey),
+                                        ),
                                       ],
                                     ),
                                     new Container(
@@ -186,13 +190,26 @@ class _Post extends State<Post> with TickerProviderStateMixin {
                                       // decoration: BoxDecoration(color: Colors.black38),
                                       // alignment: Alignment(0.0, 0.0),
                                       child: new Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      children: <Widget>[
-                                        new Text('级别:${type.user.level}', style:  TextStyle(color: Colors.grey),),
-                                        new Text('威望:${type.user.reputation}', style:  TextStyle(color: Colors.grey),),
-                                        new Text('发帖:${type.user.posts}', style:  TextStyle(color: Colors.grey),),
-                                      ],
-                                    ),
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: <Widget>[
+                                          new Text(
+                                            '级别:${type.user.level}',
+                                            style:
+                                                TextStyle(color: Colors.grey),
+                                          ),
+                                          new Text(
+                                            '威望:${type.user.reputation}',
+                                            style:
+                                                TextStyle(color: Colors.grey),
+                                          ),
+                                          new Text(
+                                            '发帖:${type.user.posts}',
+                                            style:
+                                                TextStyle(color: Colors.grey),
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -201,14 +218,12 @@ class _Post extends State<Post> with TickerProviderStateMixin {
                           ),
                         ),
                         new Container(
-                          padding: EdgeInsets.all(12.0),
+                            padding: EdgeInsets.all(12.0),
                             child: new RichText(
-
-                          text: TextSpan(text: type.content
-                          , style: new TextStyle(
-                            color: Colors.black87
-                          )),
-                        )),
+                              text: TextSpan(
+                                  text: type.content,
+                                  style: new TextStyle(color: Colors.black87)),
+                            )),
                         new Container(
                           decoration: BoxDecoration(
                               border: BorderDirectional(
@@ -229,13 +244,9 @@ class _Post extends State<Post> with TickerProviderStateMixin {
                         ),
                         new Container(
                           decoration: BoxDecoration(
-                            border: BorderDirectional(
-                              bottom: BorderSide(
-                                color: Colors.grey,
-                                width: 1.0
-                              )
-                            )
-                          ),
+                              border: BorderDirectional(
+                                  bottom: BorderSide(
+                                      color: Colors.grey, width: 1.0))),
                           child: new Row(
                             children: <Widget>[
                               new Icon(Icons.keyboard_arrow_up),
