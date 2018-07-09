@@ -79,8 +79,38 @@ class _Post extends State<Post> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    final key = new GlobalKey<ScaffoldState>();
     return MaterialApp(
       home: new Scaffold(
+        key: key,
+        endDrawer: new Drawer(
+          child: new Container(
+            child: new Column(
+              children: <Widget>[
+                new Container(
+                  child: new Row(
+                    children: <Widget>[new Icon(Icons.search), new Text('提醒')],
+                  ),
+                ),
+                new Container(
+                  child: new Row(
+                    children: <Widget>[new Icon(Icons.search), new Text('提醒')],
+                  ),
+                ),
+                new Container(
+                  child: new Row(
+                    children: <Widget>[new Icon(Icons.search), new Text('提醒')],
+                  ),
+                ),
+                new Container(
+                  child: new Row(
+                    children: <Widget>[new Icon(Icons.search), new Text('提醒')],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
         backgroundColor: ybgc,
         appBar: new AppBar(
           leading: new FlatButton(
@@ -121,10 +151,17 @@ class _Post extends State<Post> with TickerProviderStateMixin {
             new Center(
               child: new Container(
                 height: 24.0,
+                width: 24.0,
                 margin: EdgeInsets.only(right: 20.0),
-                child: new Icon(
+                child: new FlatButton(
+                  padding: EdgeInsets.all(0.0),
+                  onPressed: (){
+                    key.currentState.openEndDrawer();
+                  },
+                  child: new Icon(
                   Icons.list,
                   color: Colors.black,
+                ),
                 ),
               ),
             )

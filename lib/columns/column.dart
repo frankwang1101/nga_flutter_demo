@@ -59,50 +59,37 @@ class _Column extends State<ColumnPage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    final key = new GlobalKey<ScaffoldState>();
     final bottomTextSty = new TextStyle(color: Colors.grey, fontSize: 12.0);
     final titleTextSty = new TextStyle(color: Colors.black87, fontSize: 18.0);
     return new MaterialApp(
       home: new Scaffold(
-        drawer: new Directionality(
-          textDirection: TextDirection.rtl,
-          child: new Drawer(
-            child: new Container(
-              child: new Column(
-                children: <Widget>[
-                  new Container(
-                    child: new Row(
-                      children: <Widget>[
-                        new Icon(Icons.search),
-                        new Text('提醒')
-                      ],
-                    ),
+        key: key,
+        endDrawer: new Drawer(
+          child: new Container(
+            child: new Column(
+              children: <Widget>[
+                new Container(
+                  child: new Row(
+                    children: <Widget>[new Icon(Icons.search), new Text('提醒')],
                   ),
-                  new Container(
-                    child: new Row(
-                      children: <Widget>[
-                        new Icon(Icons.search),
-                        new Text('提醒')
-                      ],
-                    ),
+                ),
+                new Container(
+                  child: new Row(
+                    children: <Widget>[new Icon(Icons.search), new Text('提醒')],
                   ),
-                  new Container(
-                    child: new Row(
-                      children: <Widget>[
-                        new Icon(Icons.search),
-                        new Text('提醒')
-                      ],
-                    ),
+                ),
+                new Container(
+                  child: new Row(
+                    children: <Widget>[new Icon(Icons.search), new Text('提醒')],
                   ),
-                  new Container(
-                    child: new Row(
-                      children: <Widget>[
-                        new Icon(Icons.search),
-                        new Text('提醒')
-                      ],
-                    ),
+                ),
+                new Container(
+                  child: new Row(
+                    children: <Widget>[new Icon(Icons.search), new Text('提醒')],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),
@@ -171,15 +158,21 @@ class _Column extends State<ColumnPage> with TickerProviderStateMixin {
               ),
             ),
             new Center(
-              child: new Container(
-                height: 24.0,
-                margin: EdgeInsets.only(right: 20.0),
+                child: new Container(
+              height: 24.0,
+              width: 24.0,
+              margin: EdgeInsets.only(right: 20.0),
+              child: new FlatButton(
+                onPressed: () {
+                  key.currentState.openEndDrawer();
+                },
+                padding: EdgeInsets.all(0.0),
                 child: new Icon(
                   Icons.list,
                   color: Colors.black,
                 ),
               ),
-            )
+            ))
           ],
         ),
         body: new Container(
