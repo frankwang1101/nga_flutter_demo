@@ -77,7 +77,7 @@ class _Layout extends State<Layout> with TickerProviderStateMixin {
     );
     return new MaterialApp(
       theme: new ThemeData(
-        canvasColor: Colors.green
+        canvasColor: Colors.transparent
       ),
       home: new Scaffold(
         backgroundColor: ybgc,

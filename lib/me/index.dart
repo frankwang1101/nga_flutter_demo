@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import '../config/globalStyle.dart';
 import './assetMap.dart';
 import 'package:flutter/services.dart';
+import '../columns/testPress.dart';
+import './settting.dart';
 
 class Personal extends StatefulWidget {
   @override
@@ -89,7 +91,7 @@ class _Personal extends State<Personal> with TickerProviderStateMixin {
                               ),
                             ),
                           ),
-                          new Icon(Icons.arrow_right),
+                          new Icon(Icons.chevron_right),
                         ],
                       ),
                     ),
@@ -183,7 +185,18 @@ class _Personal extends State<Personal> with TickerProviderStateMixin {
                             borderRadius: BorderRadius.all(Radius.circular(36.0)),
                             border: Border.all(width: 0.2, color: Colors.grey)
                           ),
-                          child: new Icon(Icons.settings)
+                          child: new FlatButton(
+                            padding: EdgeInsets.all(0.0),
+                            onPressed: (){
+                              var r = new MaterialPageRoute(
+                                builder: (ctx){
+                                  return new Setting();
+                                }
+                              );
+                              Navigator.push(context, r);
+                            },
+                            child: new Icon(Icons.settings),
+                          )
                         ),
                       ],
                     ),
