@@ -119,7 +119,7 @@ class _Post extends State<Post> with TickerProviderStateMixin {
             },
             child: new Container(
               child: new Center(
-                child: new Icon(Icons.arrow_left),
+                child: new Icon(Icons.chevron_left),
               ),
             ),
           ),

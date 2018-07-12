@@ -534,3 +534,14 @@ List<Map<String, Object>> records = [
     "title": "[仅供参考]2018年6月部分手游收入流水统计"
   }
 ];
+
+List<Map<String, Object>> accounts = [
+  {
+    "username": "impro10",
+    "uid": 10000,
+  },
+  {
+    "username": "单机怎么办",
+    "uid": 10001
+  }
+];

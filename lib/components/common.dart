@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../config/globalStyle.dart';
 
-commonAppBar(List<String> _tabTitles) {
+commonAppBar(List<String> _tabTitles, bool expandTab) {
   return new AppBar(
           brightness: Brightness.light,
           backgroundColor: sybgc,
@@ -22,8 +22,9 @@ commonAppBar(List<String> _tabTitles) {
             tabs: _tabTitles.map((title) {
               return new Container(
                 height: 28.0,
+                width: expandTab ? ((360.0 / _tabTitles.length) - 20.0) : null,
                 padding: EdgeInsets.only(bottom: 10.0),
-                child: new Text(title),);
+                child: new Text(title, textAlign: TextAlign.center,),);
             }).toList(),
           ),
           )

@@ -145,7 +145,7 @@ class _Community extends State<Community> with TickerProviderStateMixin {
       length: _tabs.length,
       child: new Scaffold(
         backgroundColor: ybgc,
-        appBar: commonAppBar(_tabTitles),
+        appBar: commonAppBar(_tabTitles, false),
         body: new TabBarView(
           children: _tabs.map((tab) {
             return new Padding(

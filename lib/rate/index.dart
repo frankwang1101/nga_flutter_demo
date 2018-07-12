@@ -170,7 +170,7 @@ class _Rate extends State<Rate> with TickerProviderStateMixin {
       length: _tabs.length,
       child: new Scaffold(
         backgroundColor: ybgc,
-        appBar: commonAppBar(_tabTitles),
+        appBar: commonAppBar(_tabTitles, true),
         body: new TabBarView(
             children: _tabs
                 .map((tab) => new Padding(
