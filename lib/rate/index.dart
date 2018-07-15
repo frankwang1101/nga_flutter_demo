@@ -85,7 +85,7 @@ class RateComponent2 extends StatelessWidget {
                 child: new Container(
                   decoration: BoxDecoration(color: Colors.yellow),
                   padding: EdgeInsets.all(5.0),
-                  child: new Text(_info.rate.toString(), style: TextStyle(fontSize: 16.0),),
+                  child: new Text(_info.rate.toString(), style: TextStyle(fontSize: 16.0, color: fontColor()),),
                   // width: 180.0,
                 ),
                 top: 0.0,
@@ -101,8 +101,9 @@ class RateComponent2 extends StatelessWidget {
               children: <Widget>[
                 new Text(
                   _info.name,
+                  style: TextStyle(color: fontColor()),
                 ),
-                new Text(_info.releaseTime.toString())
+                new Text(_info.releaseTime.toString(), style: TextStyle(color: fontColor()),)
               ],
             ),
           )
@@ -169,7 +170,7 @@ class _Rate extends State<Rate> with TickerProviderStateMixin {
         home: new DefaultTabController(
       length: _tabs.length,
       child: new Scaffold(
-        backgroundColor: ybgc,
+        backgroundColor: ybgcFoo(),
         appBar: commonAppBar(_tabTitles, true),
         body: new TabBarView(
             children: _tabs

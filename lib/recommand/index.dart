@@ -29,11 +29,11 @@ class RecColumn extends StatelessWidget {
           ),
           new Container(
             padding: EdgeInsets.all(10.0),
-            child: new Center(child: new Text(_col.title, style: new TextStyle(color: Colors.black, fontSize: 16.0), textAlign: TextAlign.center,),),
+            child: new Center(child: new Text(_col.title, style: new TextStyle(color: fontColor(), fontSize: 16.0), textAlign: TextAlign.center,),),
           ),
           new Container(
             padding: EdgeInsets.only(top: 0.0, bottom: 10.0,left: 10.0,right: 10.0),
-            child: new Center( child:  new Text(_col.desc),),
+            child: new Center( child:  new Text(_col.desc, style: TextStyle(color: fontColor()),),),
           )
         ],
       ),
@@ -113,7 +113,7 @@ class _Recommand extends State<Recommand> with TickerProviderStateMixin {
             margin: EdgeInsets.only(top: 22.0),
             // height: 20.0,
             child: new Scaffold(
-              backgroundColor: ybgc,
+              backgroundColor: ybgcFoo(),
               appBar: new TabBar(
                 indicatorWeight: 3.5,
                 indicatorColor: activeColor,

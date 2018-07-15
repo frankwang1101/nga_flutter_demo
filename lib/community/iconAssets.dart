@@ -4,11 +4,11 @@ List iconAssets = <Map<String, String>>[
     "iconSrc": 'http://img4.nga.178.com/ngabbs/nga_classic/f/354.png.invert.png'
   },
   {
-    "label": '大旋涡博物馆',
+    "label": '博物馆',
     "iconSrc": 'http://img4.nga.178.com/ngabbs/nga_classic/f/-187579.png'
   },
   {
-    "label": '二次元国家地理',
+    "label": '二次元',
     "iconSrc": 'http://img4.nga.178.com/ngabbs/nga_classic/f/-447601.png'
   },
   {
@@ -24,7 +24,7 @@ List iconAssets = <Map<String, String>>[
     "iconSrc": 'http://img4.nga.178.com/ngabbs/nga_classic/f/-343809.png'
   },
   {
-    "label": '音乐 影视',
+    "label": '音乐影视',
     "iconSrc": 'http://img4.nga.178.com/ngabbs/nga_classic/f/00.png'
   },
   {

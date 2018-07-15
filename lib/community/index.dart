@@ -25,7 +25,7 @@ class ColumnIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Container(
-        width: 80.0,
+        width: 86.0,
         margin: EdgeInsets.only(top: 15.0),
         child: new FlatButton(
           onPressed: () {
@@ -47,6 +47,7 @@ class ColumnIcon extends StatelessWidget {
               new Text(
                 text,
                 textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 13.0, color: fontColor()),
               )
             ],
           ),
@@ -150,7 +151,7 @@ class _Community extends State<Community> with TickerProviderStateMixin {
         home: new DefaultTabController(
       length: _tabs.length,
       child: new Scaffold(
-        backgroundColor: ybgc,
+        backgroundColor: ybgcFoo(),
         appBar: commonAppBar(_tabTitles, false),
         body: new TabBarView(
           children: _tabs.map((tab) {

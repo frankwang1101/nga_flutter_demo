@@ -21,6 +21,7 @@ class CommonAppLayout extends StatelessWidget {
       home: new Scaffold(
         backgroundColor: ybgc,
         appBar: new AppBar(
+          brightness: Brightness.light,
           backgroundColor: sybgc,
           title: new Text(
             _title,

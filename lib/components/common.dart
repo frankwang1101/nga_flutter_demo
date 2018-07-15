@@ -4,9 +4,9 @@ import '../config/globalStyle.dart';
 commonAppBar(List<String> _tabTitles, bool expandTab) {
   return new AppBar(
           brightness: Brightness.light,
-          backgroundColor: sybgc,
+          backgroundColor: sybgcFoo(),
           centerTitle: false,
-          title: new Text('论坛', style: new TextStyle(color: Colors.black),),
+          title: new Text('论坛', style: new TextStyle(color: fontColor()),),
           // title: const Text('Tabbed AppBar'),
           bottom: new PreferredSize(
             preferredSize: new Size(360.0, 30.0),
