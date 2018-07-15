@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import './components/navigation_icon_view.dart';
@@ -6,6 +8,7 @@ import './me/index.dart';
 import './recommand/index.dart';
 import './rate/index.dart';
 import './community/index.dart';
+// import './components/globalState.dart';
 
 class Layout extends StatefulWidget {
   @override
@@ -19,10 +22,15 @@ class _Layout extends State<Layout> with TickerProviderStateMixin {
   List<StatefulWidget> _pages;
   List<NavigationIconView> _icons;
   StatefulWidget _currentPage;
+  // GlobalState _gl = GlobalState.instance;
+  // StreamSubscription _stateSub;
 
   @override
   void initState() {
     super.initState();
+    // _stateSub = _gl.onStateChanged.listen((data){
+    //   print('change..layout..$data');
+    // });
     _pages = <StatefulWidget>[
       new Recommand(),
       new Community(),

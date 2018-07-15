@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:nga_flutter/components/globalState.dart';
 import '../config/baseType.dart';
 import '../config/globalStyle.dart';
 import '../config/mock.dart';
@@ -18,6 +21,8 @@ class _Column extends State<ColumnPage> with TickerProviderStateMixin {
   List<PostRecord> _records;
   int _currentPage;
   int _pageSize;
+  GlobalState _gl = GlobalState.instance;
+  StreamSubscription _stateSub;
 
   @override
   void initState() {
@@ -59,6 +64,7 @@ class _Column extends State<ColumnPage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    print(_gl);
     final key = new GlobalKey<ScaffoldState>();
     final bottomTextSty = new TextStyle(color: Colors.grey, fontSize: 12.0);
     final titleTextSty = new TextStyle(color: Colors.black87, fontSize: 18.0);

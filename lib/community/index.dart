@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:nga_flutter/components/globalState.dart';
 import '../config/globalStyle.dart';
 import '../columns/column.dart';
 import '../components/common.dart';
@@ -56,6 +59,8 @@ class _Community extends State<Community> with TickerProviderStateMixin {
   List<String> _tabTitles;
   List<ColumnIcon> _icons;
   List<Widget> _tabs;
+  GlobalState _gl = GlobalState.instance;
+  StreamSubscription _stateSub;
 
   @override
   void initState() {
@@ -139,7 +144,8 @@ class _Community extends State<Community> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
+    _gl.set("community", "100");
+    print(_gl);
     return new MaterialApp(
         home: new DefaultTabController(
       length: _tabs.length,

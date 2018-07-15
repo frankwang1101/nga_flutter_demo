@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:nga_flutter/components/globalState.dart';
 import '../config/globalStyle.dart';
 import '../config/mock.dart';
 import '../config/baseType.dart';
@@ -17,6 +20,8 @@ class _Post extends State<Post> with TickerProviderStateMixin {
   int _currentPage;
   int _total;
   int _pageSize;
+  GlobalState _gl = GlobalState.instance;
+  StreamSubscription _stateSub;
 
   @override
   void initState() {
@@ -79,6 +84,7 @@ class _Post extends State<Post> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    print(_gl);
     final key = new GlobalKey<ScaffoldState>();
     return MaterialApp(
       home: new Scaffold(

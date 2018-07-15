@@ -1,4 +1,8 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:nga_flutter/components/globalState.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../config/globalStyle.dart';
 import './subPage.dart';
 
@@ -10,23 +14,47 @@ class Setting extends StatefulWidget {
   }
 }
 
-class _Setting extends State<Setting> with TickerProviderStateMixin {
+class _Setting extends State<Setting> {
   int _cache;
   int _history;
   int _craft;
   bool _showAvatar;
   bool _msgNotify;
   bool _showSign;
+  List<int> _defaultQuality;
+  GlobalState _gl = GlobalState.instance;
+  Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+  StreamSubscription _stateSub;
 
   @override
   void initState() {
     super.initState();
-    this._cache = 1234;
-    this._history = 1111;
-    this._craft = 3333;
-    this._showAvatar = false;
-    this._msgNotify = false;
-    this._showSign = false;
+    this._cache = this._gl.get("cache") ?? 1234;
+    this._history = this._gl.get("history") ?? 1111;
+    this._craft = this._gl.get("craft") ?? 3333;
+    this._showAvatar = this._gl.get("showAvatar") ?? false;
+    this._msgNotify = this._gl.get("msgNotify") ?? false;
+    this._showSign = this._gl.get("showSign") ?? false;
+    this._defaultQuality = [2, 4];
+    _stateSub = _gl.onStateChanged.listen((data) {
+      print('change...settting....$data');
+      setState(() {
+        this._history = data["history"] ?? this._history;
+        this._cache = data["cache"] ?? this._cache;
+        this._craft = data["craft"] ?? this._craft;
+        this._showAvatar = data["showAvatar"] ?? this._showAvatar;
+        this._msgNotify = data["msgNotify"] ?? this._msgNotify;
+        this._showSign = data["showSign"] ?? this._showSign;
+        // this._defaultQuality = [data["wifiPic"], data["mobilePic"]];
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _stateSub.cancel();
   }
 
   @override
@@ -56,47 +84,50 @@ class _Setting extends State<Setting> with TickerProviderStateMixin {
                   children: <Widget>[
                     new RightIcon(
                       title: "账号管理",
-                      action: () {
-                        Navigator.push(context,
+                      action: () async {
+                        final result = await Navigator.push(context,
                             new MaterialPageRoute(builder: (ctx) {
-                          return new Account();
+                          int uid = this._gl.get("user") != null
+                              ? this._gl.get("user")["uid"]
+                              : 10000;
+                          return new Account(uid);
                         }));
+                        this._gl.set("user", result["user"]);
                       },
                     ),
                     new RightIcon(
                       title: "图片质量",
-                      action: () {
-                        Navigator.push(
+                      action: () async {
+                        final result = await Navigator.push(
                           context,
                           new MaterialPageRoute(builder: (ctx) {
-                            return new PicQuality();
+                            return new PicQuality(_defaultQuality);
                           }),
                         );
+                        // this._gl.set("wifiPic", result["wifiPic"]);
+                        // this._gl.set("mobilePic", result["mobilePic"]);
                       },
                     ),
                     new RightIcon(
                       title: "应用首页",
-                      action: () {
-                        Navigator.push(context,
+                      action: () async {
+                        final result = await Navigator.push(context,
                             new MaterialPageRoute(builder: (ctx) {
-                          return new AppHomepage();
+                          return new AppHomepage(
+                              _gl.get("homepage") ?? "recommand");
                         }));
+                        _gl.set("homepage", result["homepage"]);
                       },
+                      right: homepageMap[_gl.get("homepage") ?? "recommand"],
                     ),
                     new SwitchBlock('2G/3G/4G显示用户头像', _showAvatar, (res) {
-                      this.setState(() {
-                        this._showAvatar = res;
-                      });
+                      this._gl.set("showAvatar", res);
                     }),
                     new SwitchBlock('系统消息提醒', _msgNotify, (res) {
-                      this.setState(() {
-                        this._msgNotify = res;
-                      });
+                      this._gl.set("msgNotify", res);
                     }),
                     new SwitchBlock('显示帖子签名', _showSign, (res) {
-                      this.setState(() {
-                        this._showSign = res;
-                      });
+                      this._gl.set("showSign", res);
                     }),
                     new Container(
                       height: 7.0,
@@ -104,25 +135,19 @@ class _Setting extends State<Setting> with TickerProviderStateMixin {
                     ),
                     new InfoBlock('清除缓存', _cache.toString(), () {
                       confirmBottom(context, () {
-                        this.setState(() {
-                          _cache = 0;
-                        });
+                        this._gl.set("cache", 0);
                         Navigator.pop(context);
                       });
                     }),
                     new InfoBlock('清除浏览历史', _history.toString(), () {
                       confirmBottom(context, () {
-                        this.setState(() {
-                          _history = 0;
-                        });
+                        this._gl.set("history", 0);
                         Navigator.pop(context);
                       });
                     }),
                     new InfoBlock('清除草稿', _craft.toString(), () {
                       confirmBottom(context, () {
-                        this.setState(() {
-                          _craft = 0;
-                        });
+                        this._gl.set("craft", 0);
                         Navigator.pop(context);
                       });
                     }),
@@ -157,12 +182,17 @@ class _Setting extends State<Setting> with TickerProviderStateMixin {
                       margin: EdgeInsets.only(top: 20.0),
                       child: new Center(
                         child: new RaisedButton(
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
-                          onPressed: (){},
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20.0)),
+                          onPressed: () {},
                           child: new Container(
                             width: 120.0,
                             height: 20.0,
-                            child: new Text('退出当前账号', textAlign: TextAlign.center, style: TextStyle( fontSize: 16.0),),
+                            child: new Text(
+                              '退出当前账号',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(fontSize: 16.0),
+                            ),
                           ),
                         ),
                       ),
@@ -181,13 +211,17 @@ class _Setting extends State<Setting> with TickerProviderStateMixin {
 class RightIcon extends StatelessWidget {
   final String _title;
   final Function _action;
+  final String _rightText;
 
-  RightIcon({String title, Function action})
+  RightIcon({String title, Function action, String right})
       : _title = title,
-        _action = action;
+        _action = action,
+        _rightText = right;
 
   @override
   Widget build(BuildContext context) {
+    Widget rtext =
+        this._rightText != null ? new Text(this._rightText) : new Container();
     return new Container(
       decoration: BoxDecoration(
           border: BorderDirectional(
@@ -198,10 +232,15 @@ class RightIcon extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             new Text(_title),
-            new Icon(
-              Icons.chevron_right,
-              color: activeColor,
-            )
+            new Row(
+              children: <Widget>[
+                rtext,
+                new Icon(
+                  Icons.chevron_right,
+                  color: activeColor,
+                )
+              ],
+            ),
           ],
         ),
       ),

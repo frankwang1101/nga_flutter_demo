@@ -8,6 +8,11 @@ Color sybgc = rgb(255, 247, 227, 1.0);
 Color activeColor = rgb(235, 185, 115);
 Color inactiveColor = rgb(160, 160, 160);
 
+Map<String, String> homepageMap = {
+  "recommand": "推荐",
+  "community": "社区",
+};
+
 btext(text, [margin = null, padding = null]) => new Container(
       margin: margin,
       padding: padding,
@@ -15,6 +20,6 @@ btext(text, [margin = null, padding = null]) => new Container(
     );
 rgb(r, g, b, [o = 1.0]) => Color.fromRGBO(r, g, b, o);
 
-back(context) {
-  Navigator.pop(context);
+back(context, [state]) {
+  Navigator.pop(context, state);
 }

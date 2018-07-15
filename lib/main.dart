@@ -4,7 +4,14 @@
 
 import 'package:flutter/material.dart';
 import './layout.dart';
-import 'package:flutter/services.dart';
+// import 'package:shared_preferences/shared_preferences.dart';
+
+// _fetchUserSetting() async {
+//   SharedPreferences prefs = await SharedPreferences.getInstance();
+//   Set<String> keys = prefs.getKeys();
+//   Map<String, Object> result = {};
+//   return result;
+// }
 
 class Nga extends StatelessWidget {
   @override
