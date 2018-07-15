@@ -40,27 +40,27 @@ class _Layout extends State<Layout> with TickerProviderStateMixin {
     _icons = <NavigationIconView>[
       new NavigationIconView(
         icon: new Icon(Icons.assessment),
-        text: new Text('推荐'),
+        text: new Text('推荐', style: TextStyle(color: fontColor()),),
         vsync: this
       ),
       new NavigationIconView(
         icon: new Icon(Icons.check_circle),
-        text: new Text('社区'),
+        text: new Text('社区', style: TextStyle(color: fontColor()),),
         vsync: this
       ),
       new NavigationIconView(
         icon: new Icon(Icons.crop_square),
-        text: new Text('评分'),
+        text: new Text('评分', style: TextStyle(color: fontColor()),),
         vsync: this
       ),
       // new NavigationIconView(
       //   icon: new Icon(Icons.computer),
-      //   text: new Text('赛事'),
+      //   text: new Text('赛事', style: TextStyle(color: fontColor()),),
       //   vsync: this
       // ),
       new NavigationIconView(
         icon: new Icon(Icons.person),
-        text: new Text('我的'),
+        text: new Text('我的', style: TextStyle(color: fontColor()),),
         vsync: this
       ),
     ];
@@ -69,7 +69,7 @@ class _Layout extends State<Layout> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    final BottomNavigationBar bottomNavigationBar = new BottomNavigationBar(
+    final BottomNavigationBar bottomNavigationBar = new  BottomNavigationBar(
       items: _icons.map((v) => v.item).toList(),
       currentIndex: _currentIndex,
       fixedColor: activeColor,
@@ -85,16 +85,19 @@ class _Layout extends State<Layout> with TickerProviderStateMixin {
     );
     return new MaterialApp(
       theme: new ThemeData(
-        canvasColor: Colors.transparent
+        canvasColor: sybgcFoo()
       ),
       home: new Scaffold(
-        backgroundColor: ybgc,
+        backgroundColor: ybgcFoo(),
         body: new Center(
           child: _currentPage,
-        ), bottomNavigationBar: new Theme( data: Theme.of(context).copyWith(
-          canvasColor: sybgc,
-          primaryColor: Colors.red
-        ), child: bottomNavigationBar,),
+        ), bottomNavigationBar: new Theme(
+          data: Theme.of(context).copyWith(
+            canvasColor: sybgcFoo()
+          ),
+
+          child: bottomNavigationBar,
+        ),
       ),
     );
   }

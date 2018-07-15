@@ -63,19 +63,19 @@ class _Setting extends State<Setting> {
       home: new Scaffold(
         appBar: new AppBar(
           brightness: Brightness.light,
-          backgroundColor: sybgc,
+          backgroundColor: sybgcFoo(),
           title: new Text(
             "设置",
-            style: new TextStyle(color: Colors.black),
+            style: new TextStyle(color: fontColor()),
           ),
           leading: new FlatButton(
             onPressed: () => back(context),
             child: new Center(
-              child: new Icon(Icons.chevron_left),
+              child: new Icon(Icons.chevron_left, color: Color(0xffefb973)),
             ),
           ),
         ),
-        backgroundColor: ybgc,
+        backgroundColor: sybgcFoo(),
         body: new Container(
           child: new Column(
             children: <Widget>[
@@ -131,7 +131,7 @@ class _Setting extends State<Setting> {
                     }),
                     new Container(
                       height: 7.0,
-                      decoration: BoxDecoration(color: dybgc),
+                      decoration: BoxDecoration(color: ybgcFoo()),
                     ),
                     new InfoBlock('清除缓存', _cache.toString(), () {
                       confirmBottom(context, () {
@@ -153,7 +153,7 @@ class _Setting extends State<Setting> {
                     }),
                     new Container(
                       height: 7.0,
-                      decoration: BoxDecoration(color: dybgc),
+                      decoration: BoxDecoration(color: ybgcFoo()),
                     ),
                     new RightIcon(
                       title: '给我评分',
@@ -231,7 +231,7 @@ class RightIcon extends StatelessWidget {
         child: new Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            new Text(_title),
+            new Text(_title, style: TextStyle(color: fontColor()),),
             new Row(
               children: <Widget>[
                 rtext,
@@ -265,7 +265,7 @@ class SwitchBlock extends StatelessWidget {
       child: new Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          new Text(_title),
+          new Text(_title, style: TextStyle(color: fontColor()),),
           new Switch(
             onChanged: (active) {
               _cb(active);
@@ -300,8 +300,8 @@ class InfoBlock extends StatelessWidget {
         child: new Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            new Text(_title),
-            new Text(_info),
+            new Text(_title, style: TextStyle(color: fontColor()),),
+            new Text(_info, style: TextStyle(color: fontColor()),),
           ],
         ),
       ),

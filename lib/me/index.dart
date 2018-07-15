@@ -22,6 +22,8 @@ class LabelContainer extends StatelessWidget {
     return new Container(
       height: 40.0,
       padding: EdgeInsets.only(left: 18.0),
+      decoration: BoxDecoration(
+        border: BorderDirectional( bottom: BorderSide(width: 1.0, color: bdcFoo()))),
       child: new Row(
         children: <Widget>[
           new Icon(
@@ -32,7 +34,7 @@ class LabelContainer extends StatelessWidget {
             margin: EdgeInsets.only(left: 4.0),
             child: new Text(
               title,
-              style: TextStyle(fontSize: 16.0, color: rgb(50,50,50)),
+              style: TextStyle(fontSize: 16.0, color: fontColor()),
             ),
           )
         ],
@@ -46,7 +48,7 @@ class _Personal extends State<Personal> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return new MaterialApp(
         home: new Scaffold(
-            backgroundColor: ybgc,
+            backgroundColor: ybgcFoo(),
             body: new Center(
                 child: new Stack(
               children: <Widget>[
@@ -79,85 +81,115 @@ class _Personal extends State<Personal> with TickerProviderStateMixin {
                                   new Text(
                                     'username',
                                     style: new TextStyle(
-                                        color: Colors.black, fontSize: 24.0),
+                                        color: fontColor(), fontSize: 24.0),
                                   ),
                                   new Text(
                                     '24005061',
                                     style: new TextStyle(
-                                        color: rgb(183, 180, 173, 1.0),
+                                        color: uidcFoo(),
                                         fontSize: 16.0),
                                   )
                                 ],
                               ),
                             ),
                           ),
-                          new Icon(Icons.chevron_right),
+                          new Icon(Icons.chevron_right, color: Color(0xffefb973),),
                         ],
                       ),
                     ),
-                    new Container(
-                      decoration: BoxDecoration(color: rgb(255, 247, 227, 1.0)),
-                      child: new Column(
-                        children: <Widget>[
-                          new LabelContainer(Icons.person, '我的'),
-                        ],
+                    new Expanded(
+                      child: new Container(
+                        decoration: new BoxDecoration(color: sybgcFoo()),
+                        child: new ListView(
+                          padding: EdgeInsets.all(0.0),
+                          children: <Widget>[
+                            new Container(
+                              decoration: BoxDecoration(color: sybgcFoo()),
+                              child: new Column(
+                                children: <Widget>[
+                                  new LabelContainer(Icons.person, '我的'),
+                                ],
+                              ),
+                            ),
+                            new Container(
+                              padding: EdgeInsets.only(top: 5.0, bottom: 5.0),
+                              decoration: new BoxDecoration(color: sybgcFoo()),
+                              child: new Column(
+                                children: <Widget>[
+                                  new Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    children: attachEvent(mineAsset.values
+                                        .toList()
+                                        .getRange(0, 4)),
+                                  ),
+                                  new Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    children: attachEvent(mineAsset.values
+                                        .toList()
+                                        .getRange(4, 8)),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            new Container(
+                              height: 6.0,
+                              decoration: BoxDecoration(color: ybgcFoo()),
+                            ),
+                            new Container(
+                              decoration: BoxDecoration(color: sybgcFoo()),
+                              child: new Column(
+                                children: <Widget>[
+                                  new LabelContainer(Icons.person, '发现'),
+                                ],
+                              ),
+                            ),
+                            new Container(
+                              decoration: new BoxDecoration(color: sybgcFoo()),
+                              padding: EdgeInsets.only(top: 5.0, bottom: 5.0),
+                              child: new Column(
+                                children: <Widget>[
+                                  new Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    children: attachEvent(mineAsset.values
+                                        .toList()
+                                        .getRange(8, 12)),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            new Container(
+                              height: 6.0,
+                              decoration: BoxDecoration(color: ybgcFoo()),
+                            ),
+                            new Container(
+                              // height: 40.0,
+                              decoration: BoxDecoration(color: sybgcFoo()),
+                              child: new Column(
+                                children: <Widget>[
+                                  new LabelContainer(Icons.person, '工具'),
+                                ],
+                              ),
+                            ),
+                            new Container(
+                              decoration: new BoxDecoration(color: sybgcFoo()),
+                              padding: EdgeInsets.only(top: 5.0, bottom: 5.0),
+                              child: new Column(
+                                children: <Widget>[
+                                  new Row(
+                                    children: <Widget>[
+                                      new MyIcon(mineAsset["csgo"]),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                    new Container(
-                      padding: EdgeInsets.only(top: 5.0, bottom: 5.0),
-                      child: new Column(
-                        children: <Widget>[
-                          new Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: attachEvent(mineAsset.values.toList().getRange(0, 4)),
-                          ),
-                          new Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: attachEvent(mineAsset.values.toList().getRange(4, 8)),
-                          ),
-                        ],
-                      ),
-                    ),
-                    new Container(
-                      decoration: BoxDecoration(color: rgb(255, 247, 227, 1.0)),
-                      child: new Column(
-                        children: <Widget>[
-                          new LabelContainer(Icons.person, '发现'),
-                        ],
-                      ),
-                    ),
-                    new Container(
-                      padding: EdgeInsets.only(top: 5.0, bottom: 5.0),
-                      child: new Column(
-                        children: <Widget>[
-                          new Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: attachEvent(mineAsset.values.toList().getRange(8, 12)),
-                          ),
-                        ],
-                      ),
-                    ),
-                    new Container(
-                      // height: 40.0,
-                      decoration: BoxDecoration(color: rgb(255, 247, 227, 1.0)),
-                      child: new Column(
-                        children: <Widget>[
-                          new LabelContainer(Icons.person, '工具'),
-                        ],
-                      ),
-                    ),
-                    new Container(
-                      padding: EdgeInsets.only(top: 5.0, bottom: 5.0),
-                      child: new Column(
-                        children: <Widget>[
-                          new Row(
-                            children: <Widget>[
-                              new MyIcon(mineAsset["csgo"]),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
+                    )
                   ],
                 ),
                 new Positioned(
@@ -171,33 +203,41 @@ class _Personal extends State<Personal> with TickerProviderStateMixin {
                           width: 36.0,
                           // margin: EdgeInsets.only(right: 10.0),
                           decoration: BoxDecoration(
-                            color: sybgc,
-                            borderRadius: BorderRadius.all(Radius.circular(36.0)),
-                            border: Border.all(width: 0.2, color: Colors.grey)
-                          ),
-                          child: new Icon(Icons.highlight),
-                        ),
-                        new Container(
-                          height: 36.0,
-                          width: 36.0,
-                          decoration: BoxDecoration(
-                            color: sybgc,
-                            borderRadius: BorderRadius.all(Radius.circular(36.0)),
-                            border: Border.all(width: 0.2, color: Colors.grey)
-                          ),
+                              color: sybgcFoo(),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(36.0)),
+                              border:
+                                  Border.all(width: 0.2, color: Colors.grey)),
                           child: new FlatButton(
                             padding: EdgeInsets.all(0.0),
-                            onPressed: (){
-                              var r = new MaterialPageRoute(
-                                builder: (ctx){
-                                  return new Setting();
-                                }
-                              );
-                              Navigator.push(context, r);
+                            onPressed: () {
+                              nightMode = !nightMode;
+                              setState(() {});
                             },
-                            child: new Icon(Icons.settings),
-                          )
+                            child: new Icon(Icons.highlight,
+                              color: fontColor(),
+                            ),
+                          ),
                         ),
+                        new Container(
+                            height: 36.0,
+                            width: 36.0,
+                            decoration: BoxDecoration(
+                                color: sybgcFoo(),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(36.0)),
+                                border:
+                                    Border.all(width: 0.2, color: Colors.grey)),
+                            child: new FlatButton(
+                              padding: EdgeInsets.all(0.0),
+                              onPressed: () {
+                                var r = new MaterialPageRoute(builder: (ctx) {
+                                  return new Setting();
+                                });
+                                Navigator.push(context, r);
+                              },
+                              child: new Icon(Icons.settings, color: fontColor() ,),
+                            )),
                       ],
                     ),
                   ),
@@ -228,22 +268,24 @@ class MyIcon extends StatelessWidget {
             width: 40.0,
             height: 40.0,
           ),
-          new Text(_resouce[titleKey])
+          new Text(_resouce[titleKey], style: TextStyle(color: fontColor()),)
         ],
       ),
     );
   }
 }
 
-attachEvent(Iterable list){
-  return list.map((m) => new Container(
-    width: 90.0,
-    height: 70.0,
-    child: new FlatButton(
-    onPressed: (){
-      print(m["type"]);
-    },
-    child: new MyIcon(m),
-  ),
-  )).toList();
+attachEvent(Iterable list) {
+  return list
+      .map((m) => new Container(
+            width: 90.0,
+            height: 70.0,
+            child: new FlatButton(
+              onPressed: () {
+                print(m["type"]);
+              },
+              child: new MyIcon(m),
+            ),
+          ))
+      .toList();
 }
