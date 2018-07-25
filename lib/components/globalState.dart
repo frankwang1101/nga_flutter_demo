@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class GlobalState {
   final Map<dynamic, dynamic> _data = {};
@@ -11,8 +12,22 @@ class GlobalState {
   GlobalState._();
 
   set(key, value) {
-    _data[key] = value;
-    _streamController.add(_data);
+    if (_data[key] != value) {
+      _data[key] = value;
+      this.setPref(key, value);
+      _streamController.add(_data);
+    }
+  }
+
+  setPref(key, value) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    if (value is String) {
+      prefs.setString(key, value);
+    } else if (value is int) {
+      prefs.setInt(key, value);
+    } else if (value is bool) {
+      prefs.setBool(key, value);
+    }
   }
 
   get(key) {

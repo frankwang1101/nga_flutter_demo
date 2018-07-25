@@ -145,8 +145,6 @@ class _Community extends State<Community> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    _gl.set("community", "100");
-    print(_gl);
     return new MaterialApp(
         home: new DefaultTabController(
       length: _tabs.length,
@@ -156,7 +154,7 @@ class _Community extends State<Community> with TickerProviderStateMixin {
         body: new TabBarView(
           children: _tabs.map((tab) {
             return new Padding(
-              padding: const EdgeInsets.all(12.0),
+              padding: const EdgeInsets.all(7.0),
               child: tab,
             );
           }).toList(),

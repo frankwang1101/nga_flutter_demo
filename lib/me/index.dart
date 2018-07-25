@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:nga_flutter/components/globalState.dart';
 import '../config/globalStyle.dart';
 import './assetMap.dart';
 import 'package:flutter/services.dart';
@@ -23,7 +26,8 @@ class LabelContainer extends StatelessWidget {
       height: 40.0,
       padding: EdgeInsets.only(left: 18.0),
       decoration: BoxDecoration(
-        border: BorderDirectional( bottom: BorderSide(width: 1.0, color: bdcFoo()))),
+          border: BorderDirectional(
+              bottom: BorderSide(width: 1.0, color: bdcFoo()))),
       child: new Row(
         children: <Widget>[
           new Icon(
@@ -44,6 +48,17 @@ class LabelContainer extends StatelessWidget {
 }
 
 class _Personal extends State<Personal> with TickerProviderStateMixin {
+  GlobalState _gl = GlobalState.instance;
+  StreamSubscription _stateSub;
+
+  @override
+  void initState() {
+    super.initState();
+    _stateSub = _gl.onStateChanged.listen((data) {
+
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
@@ -86,14 +101,16 @@ class _Personal extends State<Personal> with TickerProviderStateMixin {
                                   new Text(
                                     '24005061',
                                     style: new TextStyle(
-                                        color: uidcFoo(),
-                                        fontSize: 16.0),
+                                        color: uidcFoo(), fontSize: 16.0),
                                   )
                                 ],
                               ),
                             ),
                           ),
-                          new Icon(Icons.chevron_right, color: Color(0xffefb973),),
+                          new Icon(
+                            Icons.chevron_right,
+                            color: Color(0xffefb973),
+                          ),
                         ],
                       ),
                     ),
@@ -213,8 +230,10 @@ class _Personal extends State<Personal> with TickerProviderStateMixin {
                             onPressed: () {
                               nightMode = !nightMode;
                               setState(() {});
+                              _gl.set("night", nightMode);
                             },
-                            child: new Icon(Icons.highlight,
+                            child: new Icon(
+                              Icons.highlight,
                               color: fontColor(),
                             ),
                           ),
@@ -236,7 +255,10 @@ class _Personal extends State<Personal> with TickerProviderStateMixin {
                                 });
                                 Navigator.push(context, r);
                               },
-                              child: new Icon(Icons.settings, color: fontColor() ,),
+                              child: new Icon(
+                                Icons.settings,
+                                color: fontColor(),
+                              ),
                             )),
                       ],
                     ),
@@ -268,7 +290,10 @@ class MyIcon extends StatelessWidget {
             width: 40.0,
             height: 40.0,
           ),
-          new Text(_resouce[titleKey], style: TextStyle(color: fontColor()),)
+          new Text(
+            _resouce[titleKey],
+            style: TextStyle(color: fontColor()),
+          )
         ],
       ),
     );

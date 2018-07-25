@@ -4,27 +4,33 @@
 
 import 'package:flutter/material.dart';
 import './layout.dart';
-// import 'package:shared_preferences/shared_preferences.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-// _fetchUserSetting() async {
-//   SharedPreferences prefs = await SharedPreferences.getInstance();
-//   Set<String> keys = prefs.getKeys();
-//   Map<String, Object> result = {};
-//   return result;
-// }
+_fetchUserSetting() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  Set<String> keys = prefs.getKeys();
+  Map<String, Object> result = {};
+  return result;
+}
 
 class Nga extends StatelessWidget {
+
+  Map _setting;
+
+  Nga(this._setting);
+
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-      home: new Layout()
+      home: new Layout({})
     );
   }
 }
 
-void main() {
+void main() async {
+  final r = await _fetchUserSetting();
   // SystemChrome.setSystemUIOverlayStyle(new SystemUiOverlayStyle(
   //   statusBarIconBrightness: Brightness.dark
   // ));
-  runApp(new Nga());
+  runApp(new Nga(r));
 }
