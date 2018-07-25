@@ -39,6 +39,9 @@ class _Layout extends State<Layout> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
+    if (_setting.keys.length > 0) {
+      _gl.init(_setting);
+    }
     _bottomBarColor = ybgcFoo();
     _fontColor = fontColor();
     _stateSub = _gl.onStateChanged.listen((data) {

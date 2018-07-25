@@ -30,11 +30,17 @@ class GlobalState {
     }
   }
 
+  init(Map<dynamic, dynamic> t) {
+    t.keys.forEach((key){
+      _data[key] = t[key];
+    });
+  }
+
   get(key) {
     return _data[key];
   }
 
   getAll() {
-    return JSON.decode(JSON.encode(_data));
+    return json.decode(json.encode(_data));
   }
 }
